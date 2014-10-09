@@ -22,7 +22,8 @@
 
 	<div class="container">
 		<div class="jumbotron" id="input">
-	      	<input type="text" placeholder="Type here" class="form-control input-md" ng-model="sentence" ng-change="renderSentence()">
+		    <div class="btn btn-success" ng-click="toggleShow()" class="pull-right">{{hideShowText}}</div>
+      		<input ng-show="showInput" type="text" placeholder="Type here" class="form-control input-md" ng-model="sentence" ng-change="renderSentence()">
 	    </div>
 	
 		<div class="row">
