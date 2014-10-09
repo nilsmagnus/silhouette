@@ -23,7 +23,7 @@ keyboardApp.controller('guessController', ['$scope' ,
             if(/^[A-Z]+$/.test(character)){
                 return "letter upperCase"
             }
-            if(/^[gjy]+$/.test(character)){
+            if(/^[pgjy]+$/.test(character)){
                 return "letter lowLetter"
             }
             if(/^[khtlbdå]+$/.test(character)){
