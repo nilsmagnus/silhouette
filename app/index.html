@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html ng-app="soapApp" class="ng-scope">
+<html ng-app="keyboardApp" class="ng-scope">
 	<head>
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="style.css">
 		<title>Guess my words</title>
 	</head>
 <body ng-controller="guessController">
@@ -25,15 +26,11 @@
 	    </div>
 	
 		<div class="row">
-			<div class="col-md-4 col-md-offset-3" style="background-color: rgba(86,61,124,.15); min-height: 20 px">
-				{{sentence}}
-				<div id="encoded"></div>
+			<div class="col-md-9 col-md-offset-3" >
+				<div id="blocked"></div>
 			</div>
 		</div>
 	</div>
-
-
-
 
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
 	<script src="app.js"></script>
