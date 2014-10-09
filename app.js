@@ -26,7 +26,7 @@ keyboardApp.controller('guessController', ['$scope' ,
             if(/^[pgjy]+$/.test(character)){
                 return "letter lowLetter"
             }
-            if(/^[khtlbdå]+$/.test(character)){
+            if(/^[khtilbd]+$/.test(character)){
                 return "letter highLetter"
             }           
             if(/^[f]+$/.test(character)){
