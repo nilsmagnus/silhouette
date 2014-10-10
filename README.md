@@ -1,4 +1,4 @@
-guessmysentence
+Alphabetize
 ===============
 
-Educational web app for guessing words and sentences
+Educational web app for use in alphabetizing. 
