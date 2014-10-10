@@ -17,6 +17,7 @@ app.controller('guessController', ['$scope' ,
         }
 
         resolveClass = function(character){
+
             if(!/^[a-zA-Z]+$/.test(character)){
                 return "nonLetter"
             }
@@ -46,7 +47,13 @@ app.controller('guessController', ['$scope' ,
                 var letter = sentence[i];
                 var blockClass = resolveClass(letter);
                 if(blockClass == "nonLetter"){
-                    angular.element(blocked).append("<span class='"+blockClass+"'>"+sentence[i]+"</span>");
+                    if(/(\r\n|\n|\r)/.test(letter)){
+                        console.log("lineshift")
+                        angular.element(blocked).append("<br>");
+                    }
+                    else {
+                        angular.element(blocked).append("<span class='"+blockClass+"'>"+letter+"</span>");
+                    }
                 }else{
                     angular.element(blocked).append("<span class='"+blockClass+"'></span>");
                 }

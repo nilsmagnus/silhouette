@@ -1,9 +1,10 @@
 .letter{
+  margin-top:20px;
 	border: solid 1px black;
 }
 
 .upperCase{
-	display: inline-block;
+	display: inline-flex;
   min-width: 40px;
   min-height: 40px;
   margin-right: 3px;
