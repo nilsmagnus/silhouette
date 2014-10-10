@@ -4,7 +4,7 @@
 }
 
 .upperCase{
-	display: inline-flex;
+	display: inline-block;
   min-width: 40px;
   min-height: 40px;
   margin-right: 3px;
