@@ -16,12 +16,15 @@ app.controller('guessController', ['$scope' ,
             
         }
 
+        $scope.specialUpperCases = "\u00D8\u00C6\u00C5";
+
         resolveClass = function(character){
 
-            if(!/^[a-zA-Z]+$/.test(character)){
+            
+            if(!/^[a-zA-Z\u00D8\u00C6\u00C5\u00E5\u00F8\u00E6]+$/.test(character)){
                 return "nonLetter"
             }
-            if(/^[A-Z]+$/.test(character)){
+            if(/^[A-Z\u00D8\u00C6\u00C5]+$/.test(character)){
                 return "letter upperCase"
             }
             if(/^[pgjy]+$/.test(character)){
@@ -33,7 +36,7 @@ app.controller('guessController', ['$scope' ,
             if(/^[f]+$/.test(character)){
                 return "letter highLowLetter"
             }
-            if(/^[a-z]+$/.test(character)){
+            if(/^[a-z\u00E5\u00F8\u00E6]+$/.test(character)){
                 return "letter lowerCase"
             }
             return "none";
