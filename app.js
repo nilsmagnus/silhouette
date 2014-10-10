@@ -1,6 +1,6 @@
-var keyboardApp = angular.module('keyboardApp', []);
+var app = angular.module('keyboardApp', []);
 
-keyboardApp.controller('guessController', ['$scope' ,
+app.controller('guessController', ['$scope' ,
     
     function ($scope ) {
         $scope.showInput = true;
@@ -26,7 +26,7 @@ keyboardApp.controller('guessController', ['$scope' ,
             if(/^[pgjy]+$/.test(character)){
                 return "letter lowLetter"
             }
-            if(/^[khtilbd]+$/.test(character)){
+            if(/^[khtlbd]+$/.test(character)){
                 return "letter highLetter"
             }           
             if(/^[f]+$/.test(character)){

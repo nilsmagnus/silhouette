@@ -4,49 +4,49 @@
 
 .upperCase{
 	display: inline-block;
-    min-width: 40px;
-    min-height: 40px;
-    margin-right: 3px;
+  min-width: 40px;
+  min-height: 40px;
+  margin-right: 3px;
 }
 
 
 .nonLetter{
 	display: inline-block;
-    margin-right: 3px;
-    min-width: 20px;
+  margin-right: 3px;
+  min-width: 20px;
+  font-size: 55px;
 }
 
 .lowLetter{
 	position: relative;
-    bottom: -20px;
+  bottom: -20px;
 	display: inline-block;
-    margin-right: 3px;
-   	min-width: 20px;
-    min-height: 40px;
+  margin-right: 3px;
+  min-width: 20px;
+  min-height: 40px;
  }
 
 .highLetter{
 	display: inline-block;
-    margin-right: 3px;
-   	min-width: 20px;
-    min-height: 40px;
+  margin-right: 3px;
+  min-width: 20px;
+  min-height: 40px;
  }
 
  .highLowLetter{
 	position: relative;
-    bottom: -20px;
+  bottom: -20px;
 	display: inline-block;
-    margin-right: 3px;
-   	min-width: 20px;
-    min-height: 60px;
+  margin-right: 3px;
+  min-width: 20px;
+  min-height: 60px;
  }
 
 .lowerCase{
 	display: inline-block;
-    margin-right: 3px;
-   	min-width: 20px;
-    min-height: 20px;
- 
+  margin-right: 3px;
+  min-width: 20px;
+  min-height: 20px;
 }
 
 
