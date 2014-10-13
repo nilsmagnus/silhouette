@@ -52,14 +52,17 @@ app.controller('guessController', ['$scope' ,
                 var letter = sentence[i];
                 var blockClass = resolveClass(letter);
                 if (blockClass == "nonLetter") {
+                    blockHtml +='</div>';
                     if (/(\r\n|\n|\r)/.test(letter)) {
                         console.log("lineshift")
                         blockHtml +="<br>";
                     }
                     else {
-                        blockHtml +='</div><div class="word">';
                         blockHtml +="<span class='" + blockClass + "'>" + letter + "</span>";
                     }
+                    blockHtml +='<div class="word">';
+                    
+
                 } else {
                     blockHtml += "<span class='" + blockClass + "'></span>";
                 }
