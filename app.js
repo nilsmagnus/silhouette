@@ -1,64 +1,64 @@
 var app = angular.module('keyboardApp', []);
 
 app.controller('guessController', ['$scope' ,
-    
-    function ($scope ) {
+
+    function ($scope) {
         $scope.showInput = true;
         $scope.hideShowText = "Hide text";
 
-        $scope.toggleShow = function(){
-            if($scope.showInput){
+        $scope.toggleShow = function () {
+            if ($scope.showInput) {
                 $scope.hideShowText = "Show text";
-            } else{
+            } else {
                 $scope.hideShowText = "Hide text";
             }
             $scope.showInput = !$scope.showInput;
-            
+
         }
 
         $scope.specialUpperCases = "\u00D8\u00C6\u00C5";
 
-        resolveClass = function(character){
+        resolveClass = function (character) {
 
-            
-            if(!/^[a-zA-Z\u00D8\u00C6\u00C5\u00E5\u00F8\u00E6]+$/.test(character)){
+
+            if (!/^[a-zA-Z\u00D8\u00C6\u00C5\u00E5\u00F8\u00E6]+$/.test(character)) {
                 return "nonLetter"
             }
-            if(/^[A-Z\u00D8\u00C6\u00C5]+$/.test(character)){
+            if (/^[A-Z\u00D8\u00C6\u00C5]+$/.test(character)) {
                 return "letter upperCase"
             }
-            if(/^[pgjy]+$/.test(character)){
+            if (/^[pgjy]+$/.test(character)) {
                 return "letter lowLetter"
             }
-            if(/^[khtlbd]+$/.test(character)){
+            if (/^[khtlbd]+$/.test(character)) {
                 return "letter highLetter"
-            }           
-            if(/^[f]+$/.test(character)){
+            }
+            if (/^[f]+$/.test(character)) {
                 return "letter highLowLetter"
             }
-            if(/^[a-z\u00E5\u00F8\u00E6]+$/.test(character)){
+            if (/^[a-z\u00E5\u00F8\u00E6]+$/.test(character)) {
                 return "letter lowerCase"
             }
             return "none";
         }
-        $scope.renderSentence = function(){
+        $scope.renderSentence = function () {
             var sentence = $scope.sentence;
-            
+
             var blocked = document.getElementById("blocked");
             angular.element(blocked).empty();
-            for(var i =0;i<sentence.length; i++){
+            for (var i = 0; i < sentence.length; i++) {
                 var letter = sentence[i];
                 var blockClass = resolveClass(letter);
-                if(blockClass == "nonLetter"){
-                    if(/(\r\n|\n|\r)/.test(letter)){
+                if (blockClass == "nonLetter") {
+                    if (/(\r\n|\n|\r)/.test(letter)) {
                         console.log("lineshift")
                         angular.element(blocked).append("<br>");
                     }
                     else {
-                        angular.element(blocked).append("<span class='"+blockClass+"'>"+letter+"</span>");
+                        angular.element(blocked).append("<span class='" + blockClass + "'>" + letter + "</span>");
                     }
-                }else{
-                    angular.element(blocked).append("<span class='"+blockClass+"'></span>");
+                } else {
+                    angular.element(blocked).append("<span class='" + blockClass + "'></span>");
                 }
             }
         };
