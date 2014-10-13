@@ -1,19 +1,18 @@
 .letter {
     margin-top: 20px;
     border: solid 1px black;
+    margin-right: 3px;
 }
 
 .upperCase {
     display: inline-block;
     min-width: 40px;
     min-height: 40px;
-    margin-right: 3px;
 }
 
 .nonLetter {
     display: inline-block;
-    margin-right: 3px;
-    min-width: 20px;
+    min-width: 10px;
     font-size: 55px;
 }
 
@@ -21,14 +20,12 @@
     position: relative;
     bottom: -20px;
     display: inline-block;
-    margin-right: 3px;
     min-width: 20px;
     min-height: 40px;
 }
 
 .highLetter {
     display: inline-block;
-    margin-right: 3px;
     min-width: 20px;
     min-height: 40px;
 }
@@ -37,16 +34,18 @@
     position: relative;
     bottom: -20px;
     display: inline-block;
-    margin-right: 3px;
     min-width: 20px;
     min-height: 60px;
 }
 
 .lowerCase {
     display: inline-block;
-    margin-right: 3px;
     min-width: 20px;
     min-height: 20px;
+}
+
+.word{
+    display: inline-block;
 }
 
 

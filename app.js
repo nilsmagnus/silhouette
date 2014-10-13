@@ -46,21 +46,27 @@ app.controller('guessController', ['$scope' ,
 
             var blocked = document.getElementById("blocked");
             angular.element(blocked).empty();
+            var blockHtml = '<div class="word">';
+
             for (var i = 0; i < sentence.length; i++) {
                 var letter = sentence[i];
                 var blockClass = resolveClass(letter);
                 if (blockClass == "nonLetter") {
                     if (/(\r\n|\n|\r)/.test(letter)) {
                         console.log("lineshift")
-                        angular.element(blocked).append("<br>");
+                        blockHtml +="<br>";
                     }
                     else {
-                        angular.element(blocked).append("<span class='" + blockClass + "'>" + letter + "</span>");
+                        blockHtml +='</div><div class="word">';
+                        blockHtml +="<span class='" + blockClass + "'>" + letter + "</span>";
                     }
                 } else {
-                    angular.element(blocked).append("<span class='" + blockClass + "'></span>");
+                    blockHtml += "<span class='" + blockClass + "'></span>";
                 }
             }
+            blockHtml +='</div>';
+            angular.element(blocked).append(blockHtml);
+
         };
     }
 ]);
