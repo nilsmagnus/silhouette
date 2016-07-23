@@ -1,0 +1,29 @@
+{
+  "name": "silhouette",
+  "version": "1.0.0",
+  "description": "silhouette words for training in writing",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:js": "browserify -t [ babelify --presets [ react ] ] src/app.js -o dist/dist.js",
+    "watch": "watch 'npm run build:js' ./src",
+    "live": "reload -d ./dist -p 9292"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nilsmagnus/silhouette.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nilsmagnus/silhouette/issues"
+  },
+  "homepage": "https://github.com/nilsmagnus/silhouette#readme",
+  "devDependencies": {
+    "reload": "^1.0.1",
+    "watch": "^0.19.1"
+  },
+  "dependencies": {
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1"
+  }
+}
