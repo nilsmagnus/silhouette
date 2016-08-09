@@ -25,6 +25,10 @@ var Letter = React.createClass({displayName: 'Letter',
     var Word = React.createClass({displayName: 'Word',
         render: function () {
             var letters = this.props.data.split("").map(function (character) {
+                if (/(\r\n|\n|\r)/.test(character)) {
+                    console.log("lineshift")
+                    blockHtml +="<br>";
+                }
                 return (Letter({letter: character}, character));
             });
             return (React.DOM.div({className: "word"}, letters) );

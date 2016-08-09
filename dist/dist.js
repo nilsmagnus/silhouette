@@ -20311,6 +20311,7 @@ var Letter = React.createClass({
         var height, width;
 
         var character = this.props.letter;
+
         var scaleStyle = { display: 'inline-block' };
         if (!/^[a-zA-Z\u00D8\u00C6\u00C5\u00E5\u00F8\u00E6]+$/.test(character)) {
             return React.createElement(
@@ -20369,13 +20370,24 @@ var Word = React.createClass({
     }
 });
 
-var Silhouettes = React.createClass({
-    displayName: 'Silhouettes',
+var Line = React.createClass({
+    displayName: 'Line',
 
     render: function () {
         var scale = this.props.scale;
-        var words = this.props.data.split(" ").map(function (word, i) {
-            return React.createElement(Word, { data: word, key: i, scale: scale });
+        var displaySilhouettes = this.props.displaySilhouettes;
+        var words = this.props.data.split(/\s/).map(function (word, i) {
+            if (displaySilhouettes) {
+                return React.createElement(Word, { data: word, key: i, scale: scale });
+            } else {
+                return React.createElement(
+                    'div',
+                    { className: 'plainWord' },
+                    ' ',
+                    word,
+                    ' '
+                );
+            }
         });
         return React.createElement(
             'div',
@@ -20387,16 +20399,34 @@ var Silhouettes = React.createClass({
     }
 });
 
+var Silhouettes = React.createClass({
+    displayName: 'Silhouettes',
+
+    render: function () {
+        var scale = this.props.scale;
+        var displaySilhouettes = this.props.displaySilhouettes;
+        var lines = this.props.data.split(/\r\n|\n|\r/).map(function (line, i) {
+            return React.createElement(Line, { data: line, key: i, scale: scale, displaySilhouettes: displaySilhouettes });
+        });
+        return React.createElement(
+            'div',
+            { className: 'line' },
+            lines
+        );
+    }
+});
+
 var Sentence = React.createClass({
     displayName: 'Sentence',
 
     getInitialState: function () {
         return {
-            data: "Ja. hei din ost. Kygo fop. t",
+            data: "This is: \nsilhouettes!",
             hideTextArea: false,
             scale: 140,
             columns: 1,
-            hideInput: false
+            hideInput: false,
+            displaySilhouettes: true
         };
     },
     toggleTextArea: function () {
@@ -20411,6 +20441,9 @@ var Sentence = React.createClass({
     handleChange: function (event) {
         this.setState({ data: event.target.value });
     },
+    handleToggleSilhouettes: function (event) {
+        this.setState({ displaySilhouettes: event.target.value == "silhouettes" });
+    },
     toggleInpuAreas: function (event) {
         this.setState({ hideInput: !this.state.hideInput });
     },
@@ -20419,6 +20452,7 @@ var Sentence = React.createClass({
         var data = this.state.data;
         var scale = this.state.scale;
         var columns = this.state.columns;
+        var displaySilhouettes = this.state.displaySilhouettes;
 
         var colArray = new Array(columns);
         for (i = 0; i < columns; i++) {
@@ -20431,6 +20465,7 @@ var Sentence = React.createClass({
                 'div',
                 { key: i, className: clazzName },
                 React.createElement(Silhouettes, {
+                    displaySilhouettes: displaySilhouettes,
                     data: data,
                     scale: scale })
             );
@@ -20446,7 +20481,7 @@ var Sentence = React.createClass({
             React.createElement('input', { type: 'checkbox', onChange: this.toggleInpuAreas }),
             React.createElement(
                 'div',
-                { style: this.state.hideInput ? { display: 'none' } : {} },
+                { className: 'inputArea', style: this.state.hideInput ? { display: 'none' } : {} },
                 React.createElement(
                     'div',
                     null,
@@ -20465,6 +20500,7 @@ var Sentence = React.createClass({
                         value: this.state.columns,
                         onChange: this.handleColumnsChange })
                 ),
+                React.createElement('br', null),
                 React.createElement('textarea', {
                     style: { width: 400, height: 100 },
                     type: 'text',
