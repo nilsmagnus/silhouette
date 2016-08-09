@@ -20623,21 +20623,22 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 module.exports = require('./lib/React');
 
 },{"./lib/React":27}],174:[function(require,module,exports){
-'use strict';
-
 var React = require('react');
 var ReactDOM = require('react-dom');
 
 var Letter = React.createClass({
     displayName: 'Letter',
 
-    render: function render() {
-        var scale = this.props.scale;
+    render: function () {
+        let scale = this.props.scale;
         var height, width;
 
         var character = this.props.letter;
 
         var scaleStyle = { display: 'inline-block' };
+        scaleStyle.bottom = 20;
+        scaleStyle.position = 'relative';
+
         if (!/^[a-zA-Z\u00D8\u00C6\u00C5\u00E5\u00F8\u00E6]+$/.test(character)) {
             return React.createElement(
                 'span',
@@ -20652,7 +20653,7 @@ var Letter = React.createClass({
         } else if (/^[pgjy]+$/.test(character)) {
             height = 40;
             width = 20;
-            scaleStyle.bottom = -20;
+            scaleStyle.bottom = 0;
             scaleStyle.position = 'relative';
         } else if (/^[khtlbd]+$/.test(character)) {
             height = 40;
@@ -20660,8 +20661,7 @@ var Letter = React.createClass({
         } else if (/^[f]+$/.test(character)) {
             height = 60;
             width = 20;
-            scaleStyle.bottom = -20;
-            scaleStyle.position = 'relative';
+            scaleStyle.bottom = 0;
         } else if (/^[a-z\u00E5\u00F8\u00E6]+$/.test(character)) {
             height = 20;
             width = 20;
@@ -20680,8 +20680,8 @@ var Letter = React.createClass({
 var Word = React.createClass({
     displayName: 'Word',
 
-    render: function render() {
-        var scale = this.props.scale;
+    render: function () {
+        let scale = this.props.scale;
         var letters = this.props.data.split("").map(function (character, i) {
             return React.createElement(Letter, { letter: character, key: i, scale: scale });
         });
@@ -20698,7 +20698,7 @@ var Word = React.createClass({
 var Line = React.createClass({
     displayName: 'Line',
 
-    render: function render() {
+    render: function () {
         var scale = this.props.scale;
         var displaySilhouettes = this.props.displaySilhouettes;
         var words = this.props.data.split(/\s/).map(function (word, i) {
@@ -20716,7 +20716,7 @@ var Line = React.createClass({
         });
         return React.createElement(
             'div',
-            { className: 'silhouettes' },
+            { className: 'line' },
             '  ',
             words,
             ' '
@@ -20727,7 +20727,7 @@ var Line = React.createClass({
 var Silhouettes = React.createClass({
     displayName: 'Silhouettes',
 
-    render: function render() {
+    render: function () {
         var scale = this.props.scale;
         var displaySilhouettes = this.props.displaySilhouettes;
         var lines = this.props.data.split(/\r\n|\n|\r/).map(function (line, i) {
@@ -20735,7 +20735,7 @@ var Silhouettes = React.createClass({
         });
         return React.createElement(
             'div',
-            { className: 'line' },
+            null,
             lines
         );
     }
@@ -20744,9 +20744,9 @@ var Silhouettes = React.createClass({
 var Sentence = React.createClass({
     displayName: 'Sentence',
 
-    getInitialState: function getInitialState() {
+    getInitialState: function () {
         return {
-            data: "This is: \nsilhouettes!",
+            data: "sju \nåtte \n silhouette potte!",
             hideTextArea: false,
             scale: 140,
             columns: 1,
@@ -20754,25 +20754,25 @@ var Sentence = React.createClass({
             displaySilhouettes: true
         };
     },
-    toggleTextArea: function toggleTextArea() {
+    toggleTextArea: function () {
         this.setState({ hideTextArea: !this.state.hideTextArea });
     },
-    handleSizeChange: function handleSizeChange(event) {
+    handleSizeChange: function (event) {
         this.setState({ scale: event.target.value });
     },
-    handleColumnsChange: function handleColumnsChange(event) {
+    handleColumnsChange: function (event) {
         this.setState({ columns: event.target.value });
     },
-    handleChange: function handleChange(event) {
+    handleChange: function (event) {
         this.setState({ data: event.target.value });
     },
-    handleToggleSilhouettes: function handleToggleSilhouettes(event) {
+    handleToggleSilhouettes: function (event) {
         this.setState({ displaySilhouettes: event.target.value == "silhouettes" });
     },
-    toggleInpuAreas: function toggleInpuAreas(event) {
+    toggleInpuAreas: function (event) {
         this.setState({ hideInput: !this.state.hideInput });
     },
-    render: function render() {
+    render: function () {
         var i = 0;
         var data = this.state.data;
         var scale = this.state.scale;

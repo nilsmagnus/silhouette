@@ -9,6 +9,9 @@ var Letter = React.createClass({
             var character = this.props.letter;
 
             var scaleStyle = {display:'inline-block'};
+            scaleStyle.bottom = 20;
+            scaleStyle.position= 'relative';
+            
             if (!/^[a-zA-Z\u00D8\u00C6\u00C5\u00E5\u00F8\u00E6]+$/.test(character)) {
                 return (<span className="nonLetter"> {character}</span>);
             }
@@ -19,7 +22,7 @@ var Letter = React.createClass({
             else if (/^[pgjy]+$/.test(character)) {
                 height  = 40;
                 width  = 20;
-                scaleStyle.bottom = -20;
+                scaleStyle.bottom = 0;
                 scaleStyle.position= 'relative';
             }
             else if (/^[khtlbd]+$/.test(character)) {
@@ -29,8 +32,7 @@ var Letter = React.createClass({
             else if (/^[f]+$/.test(character)) {
                 height  = 60;
                 width  = 20;
-                scaleStyle.bottom = -20;
-                scaleStyle.position= 'relative';
+                scaleStyle.bottom = 0;
             }
             else if (/^[a-z\u00E5\u00F8\u00E6]+$/.test(character)) {
                 height  = 20;
@@ -71,7 +73,7 @@ var Line = React.createClass({
               return (<div className="plainWord"> {word} </div>)
             }
         });
-        return (<div className="silhouettes">  {words} </div>  );
+        return (<div className="line">  {words} </div>  );
     }
 });
 
@@ -82,7 +84,7 @@ var Silhouettes = React.createClass({
       var lines = this.props.data.split(/\r\n|\n|\r/).map(function(line, i){
         return (<Line data={line} key={i} scale={scale} displaySilhouettes={displaySilhouettes}/>);
       });
-      return (<div className="line">{lines}</div>);
+      return (<div>{lines}</div>);
     }
 });
 
@@ -90,7 +92,7 @@ var Silhouettes = React.createClass({
 var Sentence = React.createClass({
     getInitialState: function () {
         return {
-          data: "This is: \nsilhouettes!",
+          data: "sju \nåtte \n silhouette potte!",
           hideTextArea:false,
           scale:140,
           columns:1,
@@ -153,7 +155,7 @@ var Sentence = React.createClass({
                             value={this.state.scale}
                             onChange={this.handleSizeChange} />
 
-                          Columns: 
+                          Columns:
                           <input
                             style={{width:100}}
                             type="number"
