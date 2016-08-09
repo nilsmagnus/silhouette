@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/nilsmagnus/silhouette#readme",
   "devDependencies": {
+    "babel-preset-react": "^6.11.1",
+    "babelify": "^7.3.0",
     "reload": "^1.0.1",
     "watch": "^0.19.1"
   },
