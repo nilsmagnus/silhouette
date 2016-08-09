@@ -9,28 +9,27 @@ var Letter = React.createClass({
             var character = this.props.letter;
 
             var scaleStyle = {display:'inline-block'};
-            scaleStyle.bottom = 20;
+            scaleStyle.bottom = 10;
             scaleStyle.position= 'relative';
-            
+
             if (!/^[a-zA-Z\u00D8\u00C6\u00C5\u00E5\u00F8\u00E6]+$/.test(character)) {
                 return (<span className="nonLetter"> {character}</span>);
             }
             if (/^[A-Z\u00D8\u00C6\u00C5]+$/.test(character)) {
-                height  = 40;
-                width  = 40;
+                height  = 30;
+                width  = 30;
             }
             else if (/^[pgjy]+$/.test(character)) {
-                height  = 40;
+                height  = 30;
                 width  = 20;
                 scaleStyle.bottom = 0;
-                scaleStyle.position= 'relative';
             }
             else if (/^[khtlbd]+$/.test(character)) {
-                height  = 40;
+                height  = 30;
                 width  = 20;
             }
             else if (/^[f]+$/.test(character)) {
-                height  = 60;
+                height  = 40;
                 width  = 20;
                 scaleStyle.bottom = 0;
             }
@@ -41,7 +40,7 @@ var Letter = React.createClass({
             scaleStyle.minHeight= (height * (1+scale/100))
             scaleStyle.minWidth= (width * (1+scale/100));
 
-            if(scaleStyle.bottom <0){
+            if(scaleStyle.bottom >0){
               scaleStyle.bottom = '' +(scaleStyle.bottom * (1+scale/100)) +'px';
             }
 
