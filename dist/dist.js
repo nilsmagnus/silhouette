@@ -20623,14 +20623,16 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 module.exports = require('./lib/React');
 
 },{"./lib/React":27}],174:[function(require,module,exports){
+'use strict';
+
 var React = require('react');
 var ReactDOM = require('react-dom');
 
 var Letter = React.createClass({
     displayName: 'Letter',
 
-    render: function () {
-        let scale = this.props.scale;
+    render: function render() {
+        var scale = this.props.scale;
         var height, width;
 
         var character = this.props.letter;
@@ -20678,8 +20680,8 @@ var Letter = React.createClass({
 var Word = React.createClass({
     displayName: 'Word',
 
-    render: function () {
-        let scale = this.props.scale;
+    render: function render() {
+        var scale = this.props.scale;
         var letters = this.props.data.split("").map(function (character, i) {
             return React.createElement(Letter, { letter: character, key: i, scale: scale });
         });
@@ -20696,7 +20698,7 @@ var Word = React.createClass({
 var Line = React.createClass({
     displayName: 'Line',
 
-    render: function () {
+    render: function render() {
         var scale = this.props.scale;
         var displaySilhouettes = this.props.displaySilhouettes;
         var words = this.props.data.split(/\s/).map(function (word, i) {
@@ -20725,7 +20727,7 @@ var Line = React.createClass({
 var Silhouettes = React.createClass({
     displayName: 'Silhouettes',
 
-    render: function () {
+    render: function render() {
         var scale = this.props.scale;
         var displaySilhouettes = this.props.displaySilhouettes;
         var lines = this.props.data.split(/\r\n|\n|\r/).map(function (line, i) {
@@ -20742,7 +20744,7 @@ var Silhouettes = React.createClass({
 var Sentence = React.createClass({
     displayName: 'Sentence',
 
-    getInitialState: function () {
+    getInitialState: function getInitialState() {
         return {
             data: "This is: \nsilhouettes!",
             hideTextArea: false,
@@ -20752,25 +20754,25 @@ var Sentence = React.createClass({
             displaySilhouettes: true
         };
     },
-    toggleTextArea: function () {
+    toggleTextArea: function toggleTextArea() {
         this.setState({ hideTextArea: !this.state.hideTextArea });
     },
-    handleSizeChange: function (event) {
+    handleSizeChange: function handleSizeChange(event) {
         this.setState({ scale: event.target.value });
     },
-    handleColumnsChange: function (event) {
+    handleColumnsChange: function handleColumnsChange(event) {
         this.setState({ columns: event.target.value });
     },
-    handleChange: function (event) {
+    handleChange: function handleChange(event) {
         this.setState({ data: event.target.value });
     },
-    handleToggleSilhouettes: function (event) {
+    handleToggleSilhouettes: function handleToggleSilhouettes(event) {
         this.setState({ displaySilhouettes: event.target.value == "silhouettes" });
     },
-    toggleInpuAreas: function (event) {
+    toggleInpuAreas: function toggleInpuAreas(event) {
         this.setState({ hideInput: !this.state.hideInput });
     },
-    render: function () {
+    render: function render() {
         var i = 0;
         var data = this.state.data;
         var scale = this.state.scale;
@@ -20781,6 +20783,7 @@ var Sentence = React.createClass({
         for (i = 0; i < columns; i++) {
             colArray[i] = 0;
         }
+
         var clazzName = columns == 1 ? "col-md-10" : "col-md-5";
 
         var silhouetteColumns = colArray.map(function (v, i) {
@@ -20839,7 +20842,9 @@ var Sentence = React.createClass({
     }
 });
 
-ReactDOM.render(React.createElement(Sentence, null), document.getElementById('input'));
+ReactDOM.render(React.createElement(Sentence, null), document.getElementById('silhouette-app'));
+
+console.log("Silhouettes");
 
 },{"react":173,"react-dom":1}],175:[function(require,module,exports){
 // shim for using process in browser

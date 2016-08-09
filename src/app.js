@@ -127,6 +127,7 @@ var Sentence = React.createClass({
         for(i=0; i<columns; i++){
           colArray[i] =0;
         }
+
         var clazzName = columns ==1? "col-md-10":"col-md-5";
 
         var silhouetteColumns = colArray.map(function(v,i){
@@ -152,7 +153,7 @@ var Sentence = React.createClass({
                             value={this.state.scale}
                             onChange={this.handleSizeChange} />
 
-                          Columns:
+                          Columns: 
                           <input
                             style={{width:100}}
                             type="number"
@@ -164,7 +165,6 @@ var Sentence = React.createClass({
 
                         </div>
                         <br/>
-
 
                         <textarea
                           style={{width:400, height:100}}
@@ -182,5 +182,7 @@ var Sentence = React.createClass({
 
 ReactDOM.render(
         <Sentence />,
-        document.getElementById('input')
+        document.getElementById('silhouette-app')
 );
+
+console.log("Silhouettes");
