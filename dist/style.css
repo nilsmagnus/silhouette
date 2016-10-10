@@ -32,3 +32,8 @@
   font-size: 55px;
   margin-left: 10px;
 }
+
+.revealedText{
+  margin-left: 25px;
+  font-family: 'Kalam', cursive;
+}

@@ -87,12 +87,23 @@ var Silhouettes = React.createClass({
     }
 });
 
+var RevealedWords = React.createClass({
+  render: function(){
+    var scale = this.props.scale;
+    var scaleStyle ={fontSize: (40 * (1+scale/100))};
+    var displaySilhouettes = this.props.displaySilhouettes ;
+
+    return (<div className="revealedText" style={scaleStyle}>{this.props.data}</div>);
+  }
+});
+
 
 var Sentence = React.createClass({
     getInitialState: function () {
         return {
           data: "sju \nåtte \n silhouette potte!",
           hideTextArea:false,
+          revealText:false,
           scale:140,
           columns:1,
           hideInput : false,
@@ -117,6 +128,9 @@ var Sentence = React.createClass({
     toggleInpuAreas: function (event) {
         this.setState({hideInput: !this.state.hideInput});
     },
+    toggleRevealText: function (event) {
+        this.setState({revealText: !this.state.revealText});
+    },
     render: function () {
         var i = 0;
         var data = this.state.data;
@@ -131,19 +145,25 @@ var Sentence = React.createClass({
 
         var clazzName = columns ==1? "col-md-10":"col-md-5";
 
-        var silhouetteColumns = colArray.map(function(v,i){
-            return (<div key={i} className={clazzName}><Silhouettes
-                        displaySilhouettes={displaySilhouettes}
-                        data={data}
-                        scale={scale} />
-                      </div>);
-        });
+        var silhouetteColumns   = colArray.map(function(v,i){
+              return (<div key={i} className={clazzName}><Silhouettes
+                          displaySilhouettes={displaySilhouettes}
+                          data={data}
+                          scale={scale} />
+                        </div>);
+          });
+
+
         return (
                     <div >
                     <span style={this.state.hideInput? {display:'none'} : {}}>
                       Hide input?
                     </span>
                     <input type="checkbox" onChange={this.toggleInpuAreas}/>
+                    <span style={this.state.hideInput? {display:'none'} : {}}>
+                       Show Text?
+                      <input type="checkbox" onChange={this.toggleRevealText}/>
+                    </span>
 
                       <div className="inputArea" style={this.state.hideInput? {display:'none'} : {}}>
                         <div>
@@ -173,9 +193,13 @@ var Sentence = React.createClass({
                           value={this.state.data}
                           onChange={this.handleChange} />
                       </div>
-                      <div className="row">
-                      {silhouetteColumns}
-                      </div>
+                      {this.state.revealText?
+                        <RevealedWords data={this.state.data} scale={this.state.scale} />
+                        :
+                        <div className='row'>
+                            {silhouetteColumns}
+                        </div>
+                    }
                     </div>
                 );
     }

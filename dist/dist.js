@@ -20740,6 +20740,22 @@ var Silhouettes = React.createClass({
     }
 });
 
+var RevealedWords = React.createClass({
+    displayName: 'RevealedWords',
+
+    render: function () {
+        var scale = this.props.scale;
+        var scaleStyle = { fontSize: 40 * (1 + scale / 100) };
+        var displaySilhouettes = this.props.displaySilhouettes;
+
+        return React.createElement(
+            'div',
+            { className: 'revealedText', style: scaleStyle },
+            this.props.data
+        );
+    }
+});
+
 var Sentence = React.createClass({
     displayName: 'Sentence',
 
@@ -20747,6 +20763,7 @@ var Sentence = React.createClass({
         return {
             data: "sju \nåtte \n silhouette potte!",
             hideTextArea: false,
+            revealText: false,
             scale: 140,
             columns: 1,
             hideInput: false,
@@ -20770,6 +20787,9 @@ var Sentence = React.createClass({
     },
     toggleInpuAreas: function (event) {
         this.setState({ hideInput: !this.state.hideInput });
+    },
+    toggleRevealText: function (event) {
+        this.setState({ revealText: !this.state.revealText });
     },
     render: function () {
         var i = 0;
@@ -20795,6 +20815,7 @@ var Sentence = React.createClass({
                     scale: scale })
             );
         });
+
         return React.createElement(
             'div',
             null,
@@ -20804,6 +20825,12 @@ var Sentence = React.createClass({
                 'Hide input?'
             ),
             React.createElement('input', { type: 'checkbox', onChange: this.toggleInpuAreas }),
+            React.createElement(
+                'span',
+                { style: this.state.hideInput ? { display: 'none' } : {} },
+                'Show Text?',
+                React.createElement('input', { type: 'checkbox', onChange: this.toggleRevealText })
+            ),
             React.createElement(
                 'div',
                 { className: 'inputArea', style: this.state.hideInput ? { display: 'none' } : {} },
@@ -20832,7 +20859,7 @@ var Sentence = React.createClass({
                     value: this.state.data,
                     onChange: this.handleChange })
             ),
-            React.createElement(
+            this.state.revealText ? React.createElement(RevealedWords, { data: this.state.data, scale: this.state.scale }) : React.createElement(
                 'div',
                 { className: 'row' },
                 silhouetteColumns
