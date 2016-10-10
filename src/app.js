@@ -101,7 +101,7 @@ var RevealedWords = React.createClass({
 var Sentence = React.createClass({
     getInitialState: function () {
         return {
-          data: "sju \nåtte \n silhouette potte!",
+          data: "Eeny, meeny, miny, moe,\nCatch a tiger by the toe!?",
           hideTextArea:false,
           revealText:false,
           scale:140,
