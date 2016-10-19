@@ -1,0 +1,20 @@
+
+.plainText{
+  font-family: 'Kalam', cursive;
+}
+
+.boxedLetter{
+  border: solid 1px black;
+  margin-right: 3px;
+  display: inline-block;
+  position: relative;
+}
+
+.inline{
+  display: inline-block;
+}
+
+.word{
+  display: inline-block;
+  font-family: 'Kalam', cursive;
+}
