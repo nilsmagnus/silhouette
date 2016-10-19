@@ -156,7 +156,7 @@ func (c sentence) Render() gr.Component {
 
 	var boxedSentence = el.Div(
 		gr.CSS("plainText"),
-		gr.Style("font-size", fmt.Sprintf("%dpx", int((initialSize+40)*(1+scaling/100)))),
+		gr.Style("font-size", fmt.Sprintf("%dpx", int((initialSize+30)*(1+scaling/100)))),
 		gr.Text(sentence),
 	)
 
@@ -241,7 +241,7 @@ func renderBoxes(boxcontents []TextBlock, scaling float32) *gr.Element {
 	root := el.Div(
 		gr.CSS("sentence"),
 		gr.CSS("plainText"),
-		gr.Style("font-size", fmt.Sprintf("%dpx", int((initialSize+40)*(1+scaling/100)))),
+		gr.Style("font-size", fmt.Sprintf("%dpx", int((initialSize+30)*(1+scaling/100)))),
 	)
 
 	for i := len(textBlocks) - 1; i >= 0; i-- {
