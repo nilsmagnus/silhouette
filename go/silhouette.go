@@ -101,6 +101,9 @@ func RelativeTop(char rune, scale float32) int {
 }
 
 func MinWidth(char rune, scale float32) int {
+	if unicode.IsUpper(char) {
+		return int(1.5 * initialSize * (1 + scale/100))
+	}
 	return int(initialSize * (1 + scale/100))
 }
 
