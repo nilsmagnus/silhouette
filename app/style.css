@@ -9,7 +9,8 @@
     min-width: 10px;
     font-size: 100px;
     position: relative;
-    bottom: 20px;
+    bottom: 24px;
+    font-family: 'Kalam', cursive;
 }
 
 
@@ -19,16 +20,21 @@
 }
 
 .line{
-  display:block;
-  margin-top:15px;
+    display:block;
+    margin-top:10px;
 }
 
 .inputArea{
-  margin:20px;
+    margin:20px;
 }
 
 .plainWord{
-  display:inline-block;
-  font-size: 55px;
-  margin-left: 10px;
+    display:inline-block;
+    font-size: 55px;
+    margin-left: 10px;
+}
+
+.revealedText{
+    margin-left: 25px;
+    font-family: 'Kalam', cursive;
 }
