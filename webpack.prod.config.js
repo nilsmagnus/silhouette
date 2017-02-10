@@ -2,8 +2,10 @@ const webpack = require('webpack');
 
 // File ops
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // Folder ops
+const CleanPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
@@ -22,16 +24,27 @@ const NODE_MODULES = path.join(__dirname, 'node_modules');
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 8080;
 
+const PACKAGE = Object.keys(
+    require('./package.json').dependencies
+);
 
 module.exports = {
+    // workaround for bug: " Cannot resolve module fs "
+    node: {
+        fs: "empty"
+    },
     // Paths and extensions
     entry: {
         app: APP,
-        style: STYLE
+        style: STYLE,
+        vendor: PACKAGE
+
     },
     output: {
         path: BUILD,
-        filename: '[name].js'
+        filename: '[name].[hash].js',
+        chunkFileName: '[hash].js',
+        publicPath: '/'
     },
     resolve: {
         extensions: ['', '.js', '.jsx', '.css']
@@ -46,7 +59,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loaders: ['style', 'css', 'postcss'],
+                loader: ExtractTextPlugin.extract('style', 'css!postcss'),
                 include: [APP, NODE_MODULES]
             },
             {
@@ -90,6 +103,7 @@ module.exports = {
                 'NODE_ENV': JSON.stringify('production') // eslint-disable-line quote-props
             }
         }),
+        new CleanPlugin([BUILD]),
         new webpack.HotModuleReplacementPlugin(),
         new CopyWebpackPlugin([
                 {from: PUBLIC, to: BUILD}
@@ -104,7 +118,19 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: TEMPLATE,
             // JS placed at the bottom of the body element
-            inject: 'body'
-        })
+            inject: 'body',
+            minify:{
+                collapseWhitespace:true,
+            }
+        }),
+        new ExtractTextPlugin('[name].[chunkhash].css'),
+        new webpack.optimize.CommonsChunkPlugin({
+            names:['vendor', 'manifest']
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress:{
+                warnings:false,
+            }
+        }),
     ]
 };
