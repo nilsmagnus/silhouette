@@ -37,7 +37,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=development webpack-dev-server --inline",
-    "build": "NODE_ENV=production webpack --config webpack.prod.config.js"
+    "build": "NODE_ENV=production webpack --config webpack.prod.config.js",
+    "profile": "NODE_ENV=production webpack --config webpack.prod.config.js --profile --json > profile.json"
   },
   "author": "",
   "license": "ISC"
