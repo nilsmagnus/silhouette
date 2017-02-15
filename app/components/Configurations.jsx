@@ -1,7 +1,7 @@
 import React, {PropTypes, Component} from 'react';
 
 
-const Configurations = ({inputHidden, toggleShowInput, toggleBoxes}) =>
+const Configurations = ({inputHidden, toggleShowInput, toggleBoxes, toggleTwoColumns, toggleHelp}) =>
     (
         <p>
             <span >{inputHidden ? "" : "Hide input"}</span>
@@ -9,14 +9,12 @@ const Configurations = ({inputHidden, toggleShowInput, toggleBoxes}) =>
             {inputHidden ? "" : <span >
                 Show text
                 <input type="checkbox" onClick={() => toggleBoxes()}/>
-                Text size
-                <input type="number" maxLength="3" defaultValue="100"/>
-                Columns
-                <select>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                </select>
+                Two Columns
+                <input type="checkbox" onClick={() => toggleTwoColumns()}/>
+                    <a onClick={() => toggleHelp() }>Help</a>
+
                 </span>
+
             }
         </p>
     );
@@ -25,7 +23,9 @@ const Configurations = ({inputHidden, toggleShowInput, toggleBoxes}) =>
 Configurations.propTypes = {
     inputHidden: PropTypes.bool.isRequired,
     toggleShowInput: PropTypes.func.isRequired,
-    toggleBoxes: PropTypes.func.isRequired
+    toggleBoxes: PropTypes.func.isRequired,
+    toggleTwoBoxes: PropTypes.func.isRequired,
+    toggleHelp: PropTypes.func.isRequired
 };
 
 export default Configurations;

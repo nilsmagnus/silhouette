@@ -1,45 +1,90 @@
+
+a{
+    color:red;
+    text-decoration: underline;
+}
+a:hover{
+    cursor:help;
+}
+
 .letter {
     margin-top: 20px;
     border: solid 1px black;
-    margin-right: 3px;
+    margin-left: 2px;
 }
 
 .nonLetter {
     display: inline-block;
-    min-width: 10px;
+    min-width: 14px;
     font-size: 40px;
     position: relative;
     font-family: 'Kalam', cursive;
+    width: 10px;
 }
 
-
-.word{
+.word {
     display: inline-block;
-    margin-left:25px;
 }
 
-.line{
-    display:block;
-    margin-top:10px;
+.line {
+    display: block;
+    margin-top: 10px;
 }
 
-.inputArea{
-    margin:20px;
+.inputArea {
+    margin: 20px;
 }
 
-.plainWord{
-    display:inline-block;
-    font-size: 55px;
+.plainWord {
+    font-family: 'Kalam', cursive;
+    display: inline-block;
+    font-size: 35px;
     margin-left: 10px;
 }
 
-.revealedText{
+.revealedText {
     margin-left: 25px;
     font-family: 'Kalam', cursive;
 }
 
-.landing{
+.landing {
     display: flex;
     flex-flow: column;
     justify-content: flex-start;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.silhouetteAppContainer{
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.silhouette50{
+    border: 1px dashed blue;
+    padding:0;
+    width: 50%;
+}
+
+.symbol{
+    background: lightgrey;
+    width: 20px;
+    height: 20px;
+    margin-left: 2px;
+    top:10px;
+}
+
+.help{
+    border-radius: 5px;
+    border:3px solid lightgreen;
+    background: darkseagreen;
+    margin:10px;
+    padding:10px;
 }

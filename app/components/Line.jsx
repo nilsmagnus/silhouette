@@ -4,13 +4,18 @@ import Word from './Word.jsx'
 export default class Line extends React.Component {
 
     render() {
+        const displaySilhouettes = this.props.showBoxes;
 
         var words = this.props.line.split(/\s/).map(function (word, i) {
-            const displaySilhouettes = true;
             if (displaySilhouettes) {
-                return (<Word word={word} key={i}/>);
+                return (
+                    <span>
+                        <Word word={word} key={i}/>
+                        <span className="nonLetter" />
+                    </span>
+                );
             } else {
-                return (<div className="plainWord"> {word} </div>)
+                return (<div className="plainWord" key={i}> {word} </div>)
             }
         });
         return (<div className="line">  {words} </div>  );

@@ -13,9 +13,9 @@ export default class Rune extends React.Component {
         scaleStyle.bottom = 0;
         scaleStyle.position = 'relative';
 
-        if (!/^[a-zA-Z\u00D8\u00C6\u00C5\u00E5\u00F8\u00E6]+$/.test(character)) {
-            scaleStyle.bottom = -15;
-            return (<span className="nonLetter" style={scaleStyle}> {character}</span>);
+        if (!/^[0-9a-zA-Z\u00D8\u00C6\u00C5\u00E5\u00F8\u00E6]+$/.test(character)) {
+            scaleStyle.top = 17;
+            return (<span className="symbol" style={scaleStyle}> </span>);
         }
         if (/^[A-Z\u00D8\u00C6\u00C5]+$/.test(character)) {
             height = 30;
@@ -26,7 +26,7 @@ export default class Rune extends React.Component {
             width = 20;
             scaleStyle.bottom = -10;
         }
-        else if (/^[khtlbd]+$/.test(character)) {
+        else if (/^[0-9khtlbd]+$/.test(character)) {
             height = 30;
             width = 20;
         }
