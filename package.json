@@ -1,31 +1,45 @@
 {
-  "name": "silhouette",
+  "name": "pacfront",
   "version": "1.0.0",
-  "description": "silhouette words for training in writing",
+  "description": "",
+  "main": "bundle.js",
+  "dependencies": {
+    "css-loader": "^0.26.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0",
+    "style-loader": "^0.13.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.0",
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-transform-class-properties": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "clean-webpack-plugin": "^0.1.15",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-minifier": "^3.3.1",
+    "html-webpack-plugin": "^2.26.0",
+    "json-loader": "^0.5.4",
+    "postcss-easy-import": "^2.0.0",
+    "postcss-loader": "^1.2.2",
+    "precss": "^1.4.0",
+    "react-hot-loader": "^1.3.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:js": "browserify -t [ babelify --presets [ react ] ] src/app.js -o dist/dist.js",
-    "watch": "watch 'npm run build:js' ./src",
-    "live": "reload -d ./dist -p 9292"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nilsmagnus/silhouette.git"
+    "start": "NODE_ENV=development webpack-dev-server --inline",
+    "build": "NODE_ENV=production webpack --config webpack.prod.config.js",
+    "profile": "NODE_ENV=production webpack --config webpack.prod.config.js --profile --json > profile.json"
   },
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nilsmagnus/silhouette/issues"
-  },
-  "homepage": "https://github.com/nilsmagnus/silhouette#readme",
-  "devDependencies": {
-    "babel-preset-react": "^6.11.1",
-    "babelify": "^7.3.0",
-    "reload": "^1.0.1",
-    "watch": "^0.19.1"
-  },
-  "dependencies": {
-    "react": "^15.2.1",
-    "react-dom": "^15.2.1"
-  }
+  "license": "ISC"
 }
