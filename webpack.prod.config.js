@@ -43,7 +43,7 @@ module.exports = {
     },
     output: {
         path: BUILD,
-        filename: '[name].[hash].js',
+        filename: '[name].js',
         chunkFilename: '[hash].js',
         publicPath: '/'
     },
