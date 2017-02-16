@@ -10,7 +10,7 @@ export default class SilhouetteApp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            sentence: "This is a text ,\nfor your pleasure,\nfor my fun,\nwin win ",
+            sentence: "I et speil,\ni en gåte.\nJeg fant 1 flåte.",
             chunks:[],
             inputHidden: false,
             twoColumns: false,

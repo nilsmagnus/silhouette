@@ -75,11 +75,13 @@ a:hover{
 }
 
 .symbol{
+    border: 1px solid lightgrey;
     background: lightgrey;
-    width: 20px;
+    width: 15px;
     height: 20px;
     margin-left: 2px;
-    top:10px;
+    top:0px;
+    position: relative;
 }
 
 .help{
