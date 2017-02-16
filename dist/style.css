@@ -1,0 +1,40 @@
+.letter {
+    margin-top: 20px;
+    border: solid 1px black;
+    margin-right: 3px;
+}
+
+.nonLetter {
+    display: inline-block;
+    min-width: 10px;
+    font-size: 100px;
+    position: relative;
+    bottom: 24px;
+      font-family: 'Kalam', cursive;
+}
+
+
+.word{
+    display: inline-block;
+    margin-left:25px;
+}
+
+.line{
+  display:block;
+  margin-top:10px;
+}
+
+.inputArea{
+  margin:20px;
+}
+
+.plainWord{
+  display:inline-block;
+  font-size: 55px;
+  margin-left: 10px;
+}
+
+.revealedText{
+  margin-left: 25px;
+  font-family: 'Kalam', cursive;
+}
