@@ -31,8 +31,9 @@ a:hover{
     margin-top: 10px;
 }
 
-.inputArea {
-    margin: 20px;
+.inputContainer {
+    display: flex;
+    flex-orientation: row;
 }
 
 .plainWord {
@@ -87,4 +88,18 @@ a:hover{
     background: darkseagreen;
     margin:10px;
     padding:10px;
+}
+
+.deleteButton{
+    background-color: lightgrey;
+    float: right;
+    min-width: 10px;
+    min-height: 10px;
+    max-height: 10px;
+    border-radius: 5px;
+}
+.deleteButton:hover{
+    background-color: red;
+    cursor: cell;
+    border:1px pink solid;
 }

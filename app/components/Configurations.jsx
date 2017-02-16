@@ -24,7 +24,7 @@ Configurations.propTypes = {
     inputHidden: PropTypes.bool.isRequired,
     toggleShowInput: PropTypes.func.isRequired,
     toggleBoxes: PropTypes.func.isRequired,
-    toggleTwoBoxes: PropTypes.func.isRequired,
+    toggleTwoColumns: PropTypes.func.isRequired,
     toggleHelp: PropTypes.func.isRequired
 };
 

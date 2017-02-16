@@ -9,7 +9,7 @@ export default class Line extends React.Component {
         var words = this.props.line.split(/\s/).map(function (word, i) {
             if (displaySilhouettes) {
                 return (
-                    <span>
+                    <span key={i}>
                         <Word word={word} key={i}/>
                         <span className="nonLetter" />
                     </span>

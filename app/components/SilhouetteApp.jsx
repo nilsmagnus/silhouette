@@ -1,6 +1,7 @@
 import React, {PropTypes}from 'react';
 import Configurations  from './Configurations.jsx';
 import Silhouettes  from './Silhouettes.jsx';
+import Chunk from './Chunk.jsx';
 
 
 export default class SilhouetteApp extends React.Component {
@@ -10,6 +11,7 @@ export default class SilhouetteApp extends React.Component {
         super(props);
         this.state = {
             sentence: "This is a text ,\nfor your pleasure,\nfor my fun,\nwin win ",
+            chunks:[],
             inputHidden: false,
             twoColumns: false,
             boxes: true,
@@ -18,6 +20,7 @@ export default class SilhouetteApp extends React.Component {
         this.sentenceChanged = this.sentenceChanged.bind(this);
         this.toggleTwoColumns = this.toggleTwoColumns.bind(this);
         this.toggleHelp = this.toggleHelp.bind(this);
+        this.addChunk= this.addChunk.bind(this);
 
     };
 
@@ -34,8 +37,19 @@ export default class SilhouetteApp extends React.Component {
         this.setState({help: !this.state.help});
     }
 
+    addChunk(){
+        const newChunks = [{sentence:this.state.sentence, boxes:this.state.boxes},...this.state.chunks];
+        this.setState({chunks:newChunks});
+
+    }
+
     render() {
-        console.log(this.state.twoColumns);
+
+        const twoColumns = this.state.twoColumns;
+
+        const chunks =  this.state.chunks.map(function(chunk, i){
+            return(<Chunk key={i} sentence={chunk.sentence} boxes={chunk.boxes} twoColumns={twoColumns}/>)
+        });
 
         return (
 
@@ -62,7 +76,10 @@ export default class SilhouetteApp extends React.Component {
 
                 <section>
                     {this.state.inputHidden ? "" :
-                        <textarea rows="10" cols="25" onChange={this.sentenceChanged}>{this.state.sentence}</textarea>
+                        <div className="inputContainer">
+                            <textarea rows="10" cols="25" onChange={this.sentenceChanged}>{this.state.sentence}</textarea>
+                            <button onClick={this.addChunk}>Add</button>
+                        </div>
                     }
                     <div className="row">
                         <Silhouettes sentence={this.state.sentence}
@@ -74,6 +91,10 @@ export default class SilhouetteApp extends React.Component {
 
                         }
                     </div>
+                </section>
+
+                <section>
+                    {chunks}
                 </section>
             </div>
         );
