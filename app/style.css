@@ -26,27 +26,39 @@ a:hover{
     display: inline-block;
 }
 
-.line {
-    display: block;
-    margin-top: 10px;
-}
 
 .inputContainer {
     display: flex;
     flex-orientation: row;
 }
 
+.inputGroup{
+    border: 1px solid #eee;
+    margin-right: 5px;
+    padding: 3px;
+    border-radius: 3px;
+}
+.inputGroup:hover{
+    background-color: #eee;
+}
+
+.line {
+    display: block;
+    margin-left: 25px;
+    margin-top: 10px;
+}
+
+
 .plainWord {
     font-family: 'Kalam', cursive;
     display: inline-block;
     font-size: 35px;
-    letter-spacing: 14px;
-    word-spacing: 20px;
-    margin-left: 10px;
+    letter-spacing: 20px;
+    margin-right: 14px;
 }
 
 .revealedText {
-    margin-left: 25px;
+    word-spacing: 24px;
     font-family: 'Kalam', cursive;
 }
 

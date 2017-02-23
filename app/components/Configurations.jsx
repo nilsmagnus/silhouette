@@ -4,8 +4,11 @@ import React, {PropTypes, Component} from 'react';
 const Configurations = ({inputHidden, toggleShowInput, toggleBoxes, toggleTwoColumns,selectScale, toggleHelp}) =>
     (
         <p>
-            <span >{inputHidden ? "" : "Hide input"}</span>
-            <input type="checkbox" onClick={() => toggleShowInput()} value={inputHidden}/>
+            <span className="inputGroup">
+
+                <span >{inputHidden ? "" : "Hide input"}</span>
+                <input type="checkbox" onClick={() => toggleShowInput()} value={inputHidden}/>
+            </span>
             {inputHidden ? "" :
                 <span >
                     <span className="inputGroup">
