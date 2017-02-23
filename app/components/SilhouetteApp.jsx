@@ -20,10 +20,15 @@ export default class SilhouetteApp extends React.Component {
         this.sentenceChanged = this.sentenceChanged.bind(this);
         this.toggleTwoColumns = this.toggleTwoColumns.bind(this);
         this.toggleHelp = this.toggleHelp.bind(this);
+        this.selectScale = this.selectScale.bind(this);
         this.addChunk= this.addChunk.bind(this);
 
     };
 
+    selectScale(event) {
+        console.log("scale changed");
+        this.setState({scale: event.target.value});
+    };
     sentenceChanged(event) {
         this.setState({sentence: event.target.value});
     };
@@ -60,6 +65,7 @@ export default class SilhouetteApp extends React.Component {
                         toggleShowInput={() => this.setState({inputHidden: !this.state.inputHidden})}
                         toggleBoxes={() => this.setState({boxes: !this.state.boxes})}
                         toggleTwoColumns={() => this.toggleTwoColumns()}
+                        selectScale={() => this.selectScale()}
                         toggleHelp={() => this.toggleHelp()}
                     />
                 </section>
@@ -77,7 +83,7 @@ export default class SilhouetteApp extends React.Component {
                 <section>
                     {this.state.inputHidden ? "" :
                         <div className="inputContainer">
-                            <textarea rows="10" cols="25" onChange={this.sentenceChanged}>{this.state.sentence}</textarea>
+                            <textarea rows="10" cols="25" onChange={this.sentenceChanged} defaultValue={this.state.sentence} />
                             <button onClick={this.addChunk}>Add</button>
                         </div>
                     }

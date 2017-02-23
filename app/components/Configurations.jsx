@@ -1,7 +1,7 @@
 import React, {PropTypes, Component} from 'react';
 
 
-const Configurations = ({inputHidden, toggleShowInput, toggleBoxes, toggleTwoColumns, toggleHelp}) =>
+const Configurations = ({inputHidden, toggleShowInput, toggleBoxes, toggleTwoColumns,selectScale, toggleHelp}) =>
     (
         <p>
             <span >{inputHidden ? "" : "Hide input"}</span>
@@ -18,9 +18,9 @@ const Configurations = ({inputHidden, toggleShowInput, toggleBoxes, toggleTwoCol
                     </span>
                     <span className="inputGroup">
                         Scale
-                        <select>
+                        <select defaultValue="100" onSelect={() => selectScale()}>
                             <option value="70">70 %</option>
-                            <option value="100" selected="selected">100 %</option>
+                            <option value="100" >100 %</option>
                             <option value="140">140 %</option>
                         </select>
                     </span>
@@ -38,6 +38,7 @@ Configurations.propTypes = {
     toggleShowInput: PropTypes.func.isRequired,
     toggleBoxes: PropTypes.func.isRequired,
     toggleTwoColumns: PropTypes.func.isRequired,
+    selectScale: PropTypes.func.isRequired,
     toggleHelp: PropTypes.func.isRequired
 };
 
