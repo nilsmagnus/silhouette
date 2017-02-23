@@ -21,7 +21,7 @@ const Configurations = ({inputHidden, toggleShowInput, toggleBoxes, toggleTwoCol
                     </span>
                     <span className="inputGroup">
                         Scale
-                        <select defaultValue="100" onSelect={() => selectScale()}>
+                        <select defaultValue="100" onChange={() => selectScale(this)}>
                             <option value="70">70 %</option>
                             <option value="100" >100 %</option>
                             <option value="140">140 %</option>

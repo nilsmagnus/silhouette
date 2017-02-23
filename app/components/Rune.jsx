@@ -8,6 +8,7 @@ export default class Rune extends React.Component {
         var height, width;
 
         const character = this.props.letter;
+        //const scale = this.props.scale;
 
         const scaleStyle = {display: 'inline-block'};
         scaleStyle.bottom = 0;

@@ -10,8 +10,9 @@ export default class SilhouetteApp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            sentence: "I et speil,\ni en gåte.\nJeg fant 1 flåte.",
+            sentence: "Finn Mange Feilskjær.",
             chunks:[],
+            scale:100,
             inputHidden: false,
             twoColumns: false,
             boxes: true,
@@ -27,7 +28,8 @@ export default class SilhouetteApp extends React.Component {
 
     selectScale(event) {
         console.log("scale changed");
-        this.setState({scale: event.target.value});
+        console.log(event);
+        this.setState({scale: event});
     };
     sentenceChanged(event) {
         this.setState({sentence: event.target.value});
