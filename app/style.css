@@ -15,11 +15,11 @@ a:hover{
 
 .nonLetter {
     display: inline-block;
-    min-width: 20px;
+    min-width: 28px;
     font-size: 40px;
     position: relative;
     font-family: 'Kalam', cursive;
-    width: 10px;
+    width: 14px;
 }
 
 .word {
