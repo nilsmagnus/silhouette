@@ -22,6 +22,7 @@ export default class SilhouetteApp extends React.Component {
         this.toggleTwoColumns = this.toggleTwoColumns.bind(this);
         this.toggleHelp = this.toggleHelp.bind(this);
         this.selectScale = this.selectScale.bind(this);
+        this.clearText = this.clearText.bind(this);
         this.addChunk= this.addChunk.bind(this);
 
     };
@@ -31,6 +32,11 @@ export default class SilhouetteApp extends React.Component {
         console.log(event);
         this.setState({scale: event});
     };
+
+    clearText() {
+        this.setState({chunks: []});
+    };
+
     sentenceChanged(event) {
         this.setState({sentence: event.target.value});
     };
@@ -68,6 +74,7 @@ export default class SilhouetteApp extends React.Component {
                         toggleBoxes={() => this.setState({boxes: !this.state.boxes})}
                         toggleTwoColumns={() => this.toggleTwoColumns()}
                         selectScale={() => this.selectScale()}
+                        clearText={()=> this.clearText()}
                         toggleHelp={() => this.toggleHelp()}
                     />
                 </section>
