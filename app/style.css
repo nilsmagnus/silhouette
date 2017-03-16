@@ -45,7 +45,9 @@ a:hover{
 .line {
     display: block;
     margin-left: 0px;
+    margin-right: 3px;
     margin-top: 10px;
+    min-width: 350px;
 }
 
 
@@ -71,6 +73,7 @@ a:hover{
 .row{
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
 
