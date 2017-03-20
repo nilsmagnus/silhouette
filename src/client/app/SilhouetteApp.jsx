@@ -10,11 +10,11 @@ export default class SilhouetteApp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            sentence: "T testing fun",
+            sentence: "Hva skjuler boksen?",
             chunks:[
-              {sentence:"T testing fun", boxes:false},
-              {sentence:"T testing fun", boxes:true},
-              {sentence:"T testing fun", boxes:false},
+            //  {sentence:"T testing fun", boxes:false},
+            //  {sentence:"T testing fun", boxes:true},
+            //  {sentence:"T testing fun", boxes:false},
             ],
             scale:100,
             inputHidden: false,

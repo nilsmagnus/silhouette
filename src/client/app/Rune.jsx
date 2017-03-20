@@ -46,7 +46,13 @@ export default class Rune extends React.Component {
             scaleStyle.bottom = '' + (scaleStyle.bottom * (1 + scale / 100)) + 'px';
         }
 
-        return (<span className="letter" style={scaleStyle} />);
+        if(this.props.box){
+          return (<span className="letter" style={scaleStyle} />);
+        } else {
+          scaleStyle.bottom=0;
+          scaleStyle["font-size"] = 32;
+          return (<span className="plainLetter" style={scaleStyle}>{character}</span>)
+        }
     }
 
 

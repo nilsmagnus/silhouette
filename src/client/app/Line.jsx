@@ -7,16 +7,12 @@ export default class Line extends React.Component {
         const displaySilhouettes = this.props.showBoxes;
 
         var words = this.props.line.split(/\s/).map(function (word, i) {
-            if (displaySilhouettes) {
-                return (
-                    <span key={i}>
-                        <Word word={word} key={i}/>
-                        <span className="nonLetter" />
-                    </span>
-                );
-            } else {
-                return (<div className="plainWord" key={i}> {word} </div>)
-            }
+              return (
+                  <span key={i}>
+                      <Word word={word} key={i} boxes={displaySilhouettes}/>
+                      <span className="nonLetter" />
+                  </span>
+              );
         });
         return (<div className="line">  {words} </div>  );
 

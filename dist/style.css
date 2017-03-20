@@ -13,6 +13,14 @@ a:hover{
     margin-left: 2px;
 }
 
+.plainLetter {
+    display: inline-block;
+    font-family: 'Kalam', cursive;
+    display: inline-block;
+    margin-left: 4px;
+    text-align: center;
+}
+
 .nonLetter {
     display: inline-block;
     min-width: 28px;
@@ -20,6 +28,12 @@ a:hover{
     position: relative;
     font-family: 'Kalam', cursive;
     width: 14px;
+}
+
+.plainLetter {
+    display: inline-block;
+    font-family: 'Kalam', cursive;
+    display: inline-block;
 }
 
 .word {
@@ -51,13 +65,6 @@ a:hover{
 }
 
 
-.plainWord {
-    font-family: 'Kalam', cursive;
-    display: inline-block;
-    font-size: 35px;
-    letter-spacing: 20px;
-    margin-right: 14px;
-}
 
 .revealedText {
     word-spacing: 24px;
