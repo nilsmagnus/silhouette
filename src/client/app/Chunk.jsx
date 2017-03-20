@@ -1,12 +1,12 @@
 import React,{PropTypes, Component} from 'react';
 import Silhouettes from './Silhouettes.jsx';
 
-const Chunk = ({sentence, boxes, twoColumns}) =>(
+const Chunk = ({scale, sentence, boxes, twoColumns}) =>(
     <div className="row">
-        <Silhouettes sentence={sentence}
+        <Silhouettes scale={scale} sentence={sentence}
                      showBoxes={boxes} key="1"/>
         {twoColumns  ?
-            <Silhouettes sentence={sentence}
+            <Silhouettes scale={scale} sentence={sentence}
                          showBoxes={boxes} key="2"/>
             : ""
 

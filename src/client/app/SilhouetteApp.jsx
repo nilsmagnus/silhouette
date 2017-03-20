@@ -3,9 +3,7 @@ import Configurations  from './Configurations.jsx';
 import Silhouettes  from './Silhouettes.jsx';
 import Chunk from './Chunk.jsx';
 
-
 export default class SilhouetteApp extends React.Component {
-
 
     constructor(props) {
         super(props);
@@ -28,13 +26,12 @@ export default class SilhouetteApp extends React.Component {
         this.selectScale = this.selectScale.bind(this);
         this.clearText = this.clearText.bind(this);
         this.addChunk= this.addChunk.bind(this);
-
     };
 
     selectScale(event) {
         console.log("scale changed");
-        console.log(event);
-        this.setState({scale: event});
+        console.log(event.target.value);
+        this.setState({scale: event.target.value});
     };
 
     clearText() {
@@ -57,15 +54,15 @@ export default class SilhouetteApp extends React.Component {
     addChunk(){
         const newChunks = [{sentence:this.state.sentence, boxes:this.state.boxes},...this.state.chunks];
         this.setState({chunks:newChunks});
-
     }
 
     render() {
 
         const twoColumns = this.state.twoColumns;
+        const scale = this.state.scale;
 
         const chunks =  this.state.chunks.map(function(chunk, i){
-            return(<Chunk key={i} sentence={chunk.sentence} boxes={chunk.boxes} twoColumns={twoColumns}/>)
+            return(<Chunk scale={scale} key={i} sentence={chunk.sentence} boxes={chunk.boxes} twoColumns={twoColumns}/>)
         });
 
         return (
@@ -77,7 +74,7 @@ export default class SilhouetteApp extends React.Component {
                         toggleShowInput={() => this.setState({inputHidden: !this.state.inputHidden})}
                         toggleBoxes={() => this.setState({boxes: !this.state.boxes})}
                         toggleTwoColumns={() => this.toggleTwoColumns()}
-                        selectScale={() => this.selectScale()}
+                        selectScale={this.selectScale}
                         clearText={()=> this.clearText()}
                         toggleHelp={() => this.toggleHelp()}
                     />
@@ -101,10 +98,12 @@ export default class SilhouetteApp extends React.Component {
                         </div>
                     }
                     <div className="row">
-                        <Silhouettes sentence={this.state.sentence}
+                        <Silhouettes scale={this.state.scale}
+                                     sentence={this.state.sentence}
                                      showBoxes={this.state.boxes} key="1"/>
                         {this.state.twoColumns ?
                             <Silhouettes sentence={this.state.sentence}
+                                         scale={this.state.scale}
                                          showBoxes={this.state.boxes} key="2"/>
                             : ""
 

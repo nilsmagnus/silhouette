@@ -4,7 +4,7 @@ export default class Rune extends React.Component {
 
 
     render() {
-        let scale = 1;
+        let scale = this.props.scale;
         var height, width;
 
         const character = this.props.letter;
@@ -14,7 +14,7 @@ export default class Rune extends React.Component {
         scaleStyle.bottom = 0;
         scaleStyle.position = 'relative';
 
-        if (!/^[0-9a-zA-Z\u00D8\u00C6\u00C5\u00E5\u00F8\u00E6]+$/.test(character)) {
+        if (this.props.box && !/^[0-9a-zA-Z\u00D8\u00C6\u00C5\u00E5\u00F8\u00E6]+$/.test(character)) {
             return (<span className="symbol" style={scaleStyle}> </span>);
         }
         if (/^[A-Z\u00D8\u00C6\u00C5]+$/.test(character)) {
@@ -39,18 +39,18 @@ export default class Rune extends React.Component {
             height = 28;
             width = 28;
         }
-        scaleStyle.minHeight = (height * (1 + scale / 100))
-        scaleStyle.minWidth = (width * (1 + scale / 100));
+        scaleStyle.minHeight = (height * ( scale / 100))
+        scaleStyle.minWidth = (width * ( scale / 100));
 
         if (scaleStyle.bottom > 0) {
-            scaleStyle.bottom = '' + (scaleStyle.bottom * (1 + scale / 100)) + 'px';
+            scaleStyle.bottom = '' + (scaleStyle.bottom * ( scale / 100)) + 'px';
         }
 
         if(this.props.box){
           return (<span className="letter" style={scaleStyle} />);
         } else {
           scaleStyle.bottom=0;
-          scaleStyle["font-size"] = 32;
+          scaleStyle["font-size"] = (32 * (scale/100)) ;
           return (<span className="plainLetter" style={scaleStyle}>{character}</span>)
         }
     }
