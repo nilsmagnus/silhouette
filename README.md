@@ -12,15 +12,15 @@ Inspired from the teaching methods of Jørgen Frost and Marit Larsgård.
 # Build /run
 
 You will need npm to run this. Clone this repository and run
-    
+
     npm install && npm start
-    
+
 then go to http://localhost:8080/webpack-dev-server/bundle and start developing .
 
 ## Package
 
-Run the command 
- 
+Run the command
+
     npm run build
 
 
