@@ -1,0 +1,49 @@
+html{
+    font-family: "DejaVu Sans", SansSerif;
+    background: white;
+}
+
+.app-container{
+    display:flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right:auto;
+    height: 100%;
+}
+
+.title{
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2em;
+    text-transform: capitalize;
+}
+
+.input-panel{
+    margin:auto;
+    display:flex;
+    flex-direction:row;
+    width: 100%;
+}
+
+.input-text{
+    flex-grow:4;
+    border-radius: 8px;
+}
+
+.input-button{
+    flex-grow:1;
+    border-radius: 8px;
+}
+
+.parcel-list{
+}
+
+.parcel-item{
+    list-style: none;
+    margin-top: 3px;
+}
+
+.parcel-item:hover{
+    background: #c9c9c9;
+}
